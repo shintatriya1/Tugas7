@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/ionic.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var url = "https://shinta12.000webhostapp.com/cardova/www/json.php";
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                
+                var id = field.id;
+                var nama=field.nama;
+                var alamat=field.alamat;
+                var nama_barang=field.nama_barang;
+                var harga=field.harga;
+               
+                
+                $("#listview").append("<a class='item' href='form.html?id=" + id + "&nama=" + nama + "&alamat=" + alamat + "&nama_barang=" + nama_barang + "&harga=" + harga +  "'><h2>" + nama + " </h2><h2>" + alamat + " </h2><h2>" + nama_barang + " </h2><h2>" + harga + "</p></a>");
+            });
+        });
+    });
+    </script>
+</head>
+
+<body>
+    <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
+        <a href="index.html" class="button button-clear">Home</a>
+        <h1 class="title">Read Database (JSON)</h1>
+    </div>
+    <br/>
+    <br/>
+    <ul class="list" id="listview">
+    </ul>
+</body>
+
+</html>
